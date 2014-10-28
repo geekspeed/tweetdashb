@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">  
+  <display-name>sentiRest</display-name>
+ <listener>
+    <listener-class>com.ebay.webres.resource.env.EbayResourceRuntimeListener</listener-class>
+  </listener>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>index</welcome-file>
+  </welcome-file-list>
+  
+   	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring/context.xml</param-value>
+	</context-param>
+	<context-param>
+            <param-name>contextClass</param-name>
+            <param-value>org.springframework.web.context.support.XmlWebApplicationContext</param-value>
+    </context-param>
+
+    <filter>
+        <filter-name>requestContextFilter</filter-name>
+		<filter-class>org.springframework.web.filter.RequestContextFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>requestContextFilter</filter-name>
+        <servlet-name>*</servlet-name>      
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>    
+    
+	<servlet>
+  		<servlet-name>GingerServlet</servlet-name> 
+  		<servlet-class>org.ebayopensource.ginger.spring.server.container.GingerSpringServletShell</servlet-class> 
+  		 <init-param>
+        	<param-name>org.ebayopensource.ginger.config.resource.config.class</param-name> 
+        	<param-value>com.ebay.raptor.server.config.RaptorResourceConfig</param-value>
+    	</init-param>
+    	<init-param>
+    		<param-name>contextConfigLocation</param-name>
+    		<param-value>/WEB-INF/spring/ginger-servlet.xml</param-value>
+    	</init-param>
+    	<init-param>
+    	<param-name>ServiceVersion</param-name>
+    	<param-value>1.0.0</param-value>
+    	</init-param>
+  	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>GingerServlet</servlet-name>
+		<url-pattern>/sentirest/sampleResource/v1/*</url-pattern>
+	</servlet-mapping>
+	
+</web-app>

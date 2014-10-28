@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<parent>
+		<groupId>com.ebay.app.raptor</groupId>
+		<artifactId>sentiRest</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+		
+		
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>sentiRestService</artifactId>
+	<packaging>war</packaging>
+		
+	<properties>
+	 <m2eclipse.wtp.contextRoot>/</m2eclipse.wtp.contextRoot>
+    </properties>
+	
+	
+	<dependencies>
+		<dependency>
+            <groupId>com.ebay.raptor.core</groupId>
+            <artifactId>RaptorKernel</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ebay.raptor.core</groupId>
+            <artifactId>ConfigWeb</artifactId>
+        </dependency>
+        <dependency>
+               <groupId>com.ebay.webres</groupId>
+               <artifactId>WebResRaptor</artifactId>
+       </dependency>
+        
+        <!-- FIXME : Temp dependency until ConfigWeb is fixed -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ebay.raptor.core</groupId>
+            <artifactId>RaptorWeb</artifactId>
+        </dependency>
+        <dependency>
+                 <groupId>javax.servlet</groupId>
+                 <artifactId>javax.servlet-api</artifactId>
+          </dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+	    </dependency>	
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+	    </dependency>	
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<dependency>
+		  <groupId>org.ebayopensource.ginger</groupId> 
+		  <artifactId>basic-jaxrs</artifactId>
+		</dependency>
+		<dependency>
+		  <groupId>org.ebayopensource.ginger</groupId> 
+		  <artifactId>raptor-basic-jaxrs</artifactId>
+		</dependency>
+		
+		<dependency>
+  <groupId>org.mongodb</groupId>
+  <artifactId>mongo-java-driver</artifactId>
+  <version>2.12.2</version>
+</dependency>
+
+<dependency>
+  <groupId>org.twitter4j</groupId>
+  <artifactId>twitter4j-stream</artifactId>
+  <version>4.0.1</version>
+</dependency>
+<dependency>
+  <groupId>org.twitter4j</groupId>
+  <artifactId>twitter4j-core</artifactId>
+  <version>4.0.1</version>
+</dependency>
+      <dependency>
+       	<groupId>com.ebay.app.raptor</groupId>
+      	<artifactId>sentiRestLib</artifactId>      			
+      </dependency>   
+      
+	</dependencies>	
+	
+	<build>
+		<plugins>	
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <warName>ROOT</warName>  
+                </configuration>
+            </plugin>         
+            <plugin>
+                <groupId>com.ebay.raptor.build</groupId>
+                <artifactId>assembler-maven-plugin</artifactId>             
+            </plugin>
+            <plugin>
+                <groupId>com.ebay.raptor.build</groupId>
+                <artifactId>metadata-maven-plugin</artifactId>
+            </plugin>         
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-resource</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>add-resource</goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+                                <resource>
+                                    <directory>content/v4contentsource</directory>
+                                    <targetPath>v4contentsource</targetPath>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.ebay.content</groupId>
+                <artifactId>maven-content-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${basedir}/content</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>			
+		
+	</build>
+</project>

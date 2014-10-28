@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<!-- Parent POM information Most of shared sections/configurations between 
+		projects are inherited from parent pom. The shared sections are distributionManagement, 
+		repositories, pluginRepositories, PluginManagement, Plugins -->
+	<parent>
+		<groupId>com.ebay.app.raptor</groupId>
+		<artifactId>sentiRest</artifactId>
+		<version>0.0.1-SNAPSHOT</version>	
+			<relativePath>..</relativePath>	
+	</parent>
+
+	<!-- POM Information ab thout the Project -->
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>sentiRestLib</artifactId>
+	<!-- Packing Type is bundle for OSGI Library Bundle -->
+
+	<dependencies>
+		<dependency>
+			<groupId>com.ebay.raptor.core</groupId>
+			<artifactId>RaptorKernel</artifactId>
+		</dependency>
+		<dependency><groupId>com.ebay.kernel</groupId><artifactId>EbayServer</artifactId></dependency>
+		<dependency><groupId>com.ebay.kernel</groupId><artifactId>Kernel</artifactId></dependency>
+		<dependency><groupId>com.ebay.v3jars.Houston</groupId><artifactId>KernelDAL</artifactId></dependency>
+		<dependency><groupId>com.ebay.kernel</groupId><artifactId>uKernel</artifactId></dependency>
+		<dependency><groupId>com.ebay.kernel</groupId><artifactId>uKernelCore</artifactId></dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+		</dependency>
+		<dependency>
+                 <groupId>javax.servlet</groupId>
+                 <artifactId>javax.servlet-api</artifactId>
+          </dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-asm</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-expression</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>aopalliance</groupId>
+			<artifactId>aopalliance</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.cglib</artifactId>
+		</dependency>
+			
+	</dependencies>
+	
+	<!-- Build Configuration -->
+	<build>
+		<plugins>	
+			
+		</plugins>
+	</build>
+	
+		<!-- Configuration of repositories for dependency resolution -->
+	<repositories>
+		<!-- Raptor Bundles Repository -->
+		<!-- This is needed to locate the Raptor Parent project. Other repositories come from the parent. -->
+		<repository>
+			<id>releases</id>
+			<url>http://ebaycentral/content/repositories/releases/</url>
+			<releases>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>		
+		<repository>
+			<id>thirdparty</id>
+			<url>http://ebaycentral/content/repositories/thirdparty/</url>
+			<releases>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>	
+	</repositories>
+</project>

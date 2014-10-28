@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<parent>
+		<groupId>com.ebay.app.raptor</groupId>
+		<artifactId>sentiRest</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+		
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>sentiRestTest</artifactId>
+	<packaging>jar</packaging>
+			
+	 <dependencies>
+	 	<dependency>
+        	<groupId>org.ebayopensource.ginger</groupId>
+        	<artifactId>ebay-jaxrs-client</artifactId>
+        </dependency>
+        <dependency>
+        	<groupId>com.springsource.org</groupId>
+        	<artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
+    
+    	<!-- Build Configration -->
+	<build>
+		<plugins>	
+			<!-- Apache Felix Bundle Plugin - For Generation of Manifest after Compile 
+				phase -->
+			
+			<plugin>
+        		<groupId>org.apache.maven.plugins</groupId>
+        		<artifactId>maven-surefire-plugin</artifactId>
+  				<configuration>
+          			<skipTests>true</skipTests>
+        		</configuration>
+      		</plugin>
+			
+		</plugins>
+	</build>
+	
+		<!-- Configuration of repositories for dependency resolution -->
+	<repositories>
+		<!-- Raptor Bundles Repository -->
+		<!-- This is needed to locate the Raptor Parent project. Other repositories come from the parent. -->
+		<repository>
+			<id>releases</id>
+			<url>http://ebaycentral/content/repositories/releases/</url>
+			<releases>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>		
+		<repository>
+			<id>thirdparty</id>
+			<url>http://ebaycentral/content/repositories/thirdparty/</url>
+			<releases>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>	
+	</repositories>
+</project>
